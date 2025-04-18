@@ -29,10 +29,10 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file:   /go-app/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository }}/go-app:latest
+         context: ./go-app
+         file: ./go-app/Dockerfile   
+         push: true
+         tags: ghcr.io/${{ github.repository }}/go-app:latest
 
       # Optional: Add this step to show build logs for debugging
       - name: Show Docker build logs
