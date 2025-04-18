@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile  # Ensure this points to your Dockerfile
+          file:   /go-app/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository }}/go-app:latest
 
