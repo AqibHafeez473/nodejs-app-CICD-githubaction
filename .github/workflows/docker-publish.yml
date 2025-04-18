@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile
+          file: ./goapp/Dockerfile
           push: true
           tags: ghcr.io/aqibhafeez473/nodejs-app-cicd-githubaction/go-app:latest
 
