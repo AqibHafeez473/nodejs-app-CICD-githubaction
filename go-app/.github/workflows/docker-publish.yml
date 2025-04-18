@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:  # Ye manual trigger ke liye hai
 
 jobs:
   build:
