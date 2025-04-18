@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  # workflow_dispatch:  # Ye manual trigger ke liye hai
+  # workflow_dispatch:  #  manual trigger 
 
 jobs:
   build:
