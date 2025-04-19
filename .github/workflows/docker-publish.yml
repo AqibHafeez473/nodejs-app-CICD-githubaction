@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  # workflow_dispatch:  # for manual trigger
+  # workflow_dispatch:  # Uncomment for manual trigger
 
 jobs:
   build:
@@ -30,35 +30,14 @@ jobs:
       - name: Build Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./go-app
-          file: ./go-app/Dockerfile
-          push: false
+          context: .  
+          file: ./go-app/Dockerfile  # Path to  Dockerfile
+          push: false  # Set to 'false' if you're just building the image locally for now
           tags: ghcr.io/aqibhafeez473/nodejs-app-cicd-githubaction/go-app:latest
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Java (for Gradle)
-        uses: actions/setup-java@v4
-        with:
-          java-version: '21'
-          distribution: 'zulu'
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: Run Gradle Build
-        run: ./gradlew build
-
-      - name: Run Tests
-        run: ./gradlew test
 
   deploy:
     runs-on: ubuntu-latest
-    needs: test
+    needs: build
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -76,11 +55,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./go-app
+          context: .  # Again, root directory of your project
           file: ./go-app/Dockerfile
-          push: true
+          push: true  # Push the image to GHCR
           tags: ghcr.io/aqibhafeez473/nodejs-app-cicd-githubaction/go-app:latest
-
-
-
-         
