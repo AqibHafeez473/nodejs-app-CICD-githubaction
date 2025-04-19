@@ -30,7 +30,7 @@ jobs:
       - name: Build Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .  
+          context: ./go-app  # Path to your Go app directory  
           file: ./go-app/Dockerfile  # Path to  Dockerfile
           push: false  # Set to 'false' if you're just building the image locally for now
           tags: ghcr.io/aqibhafeez473/nodejs-app-cicd-githubaction/go-app:latest
@@ -55,7 +55,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .  # Again, root directory of your project
+          context: ./go-app  # Again, root directory of your project
           file: ./go-app/Dockerfile
           push: true  # Push the image to GHCR
           tags: ghcr.io/aqibhafeez473/nodejs-app-cicd-githubaction/go-app:latest
