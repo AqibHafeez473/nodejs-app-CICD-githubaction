@@ -46,7 +46,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
-          distribution: 'adoptopenjdk'
+          distribution: 'adoptium'
 
       - name: Run Gradle Build
         run: ./gradlew build
