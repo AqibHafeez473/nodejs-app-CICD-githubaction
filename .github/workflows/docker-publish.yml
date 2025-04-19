@@ -22,7 +22,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Get Git Commit SHA
         id: sha
         run: echo "::set-output name=sha::$(git rev-parse --short HEAD)"
@@ -46,6 +46,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
+          distribution: 'adoptopenjdk'
 
       - name: Run Gradle Build
         run: ./gradlew build
